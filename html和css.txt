@@ -1,0 +1,122 @@
+网站.网页
+  （1） 网站是构建web的基础，所谓的网站（Website)，就是指在万维网上，根据一定的规则，使用HTML等工具制作的用于展示特定内容的相关网页的集合，同时也是构成web的基础。
+  （2）网页是网站中的一页，是构成网站的基础。网站就是由网页组成的。
+  
+IE 浏览器         chrome(谷歌)     Firefox(火狐)     OperaL(欧朋)    safari(苹果)
+
+HTML 是一种超文本标记语言（Hyper Text Markup Language）
+
+xhtml(eXtensible Hyper Text Markup Language)
+
+<p></p>：段落与段落之间换行
+<br/>：换行标签指行与行之间换行，他是一个空标签
+<h1></h1>:代表1级标题，级别最好高,字体最大，其它标题依次递减
+<h6></h6>:级别最低       对齐方式 align
+<center></center>:文本居中对齐
+
+列表  
+  （1）无序列表     disc实心圆      <ul><li></li</ul>
+  （2）有序列表    circle空心圆   <ol><li></li></ol>
+  （3）自定义列表     square实心方块  <dl><dt>条目</dt><dd></dd></dl>
+
+滚动标签
+   语法：<marquee>内容</marquee>
+   （1）滚动方向direction（up,down,left,right)
+            语法：<marquee direction=“方向”>内容</marquee>
+   （2）滚动方式behavior（scroll：循环滚动，默认；slide：滚动一次就停止；alternate：来回交替滚动）
+            语法：<marquee behavior=“方式”>内容</marquee>
+  
+align属性控制段落的水平位置
+  align=“left/center/right”
+  
+设置文字的特殊样式
+  <b>加粗      <i>倾斜    <u>下划线     <s>删除线    <big>放大   <small>缩小    <strong>加强强调
+  <em>倾斜
+
+设置字体颜色和大小
+   <font color="颜色" face="字体" size="大小"></font>
+
+特殊文字符号
+     &lt=">"  &gt=">"  &nbsp="空格" &copy="版权" 
+     <sup></sup>上标    <sub></sub>下标
+     
+图片
+   Gif：将图像归纳为256种颜色，支持透明，动画
+   Jpeg:对色彩的信息保留较好，支持1670万种颜色，文件较小
+   Png:无损压缩图像文件，文件较大，支持透明
+
+<img src="路径" alt="提示文字" width="宽" height="高" />
+<a href="链接地址" target=“目标窗口的打开方式”>
+URL :统一资源定位符（Uniform Resource Locator）
+  由3部分组成：资源类型；存放资源的主机域名；资源文件名
+  （1）相对路径：例：c:/web/img/1.jpg
+  （2）绝对路径：例：../img/photo.jpg
+  
+<area>标签：定义图像映射的区域
+
+表格
+  由3部分构成：行；列；单元格
+  <table><tr><td></td></tr></table>
+  <th></th>表头
+  border=“边框宽度”  bordercolor="边框颜色"  cellspacing="内框宽度值"
+  cellpadding="文字与边框距离值"  background=“背景图片地址”
+  valign="文字垂直对齐方式"
+  
+  表单
+  <input type="text">单行文本输入框       type="password" 密码      radio单选按钮
+  checkbox复选框      file文件域     submit提交按钮      rest重置按钮    button按钮
+  <textarea></textarea>多行文本
+  <select><option></option></select>下拉框
+  input标签共有的属性     type控件的类型    value指定默认值    size属性 文本框显示长度
+  maxlength属性 用户可以输入的最多字符   name 用于服务器获取数据
+
+  <!DOCTYPE html>声明方式
+  透明：opacity
+  css(csasading Style Sheet)的缩写
+  类后面跟  .
+ id选择器  #
+ 伪类选择器 :hover鼠标经过超链接时的样式
+           ：active鼠标在超链接上点击的样式
+交叉选择器  例：div.box{width：200px;} 
+优先级别：ID选择器> 类选择器>标签
+（1）标签内引入：直接在标签里面引入style
+（2）内嵌式：在head部分加入style
+（3）链接式：在head部分加入link标签，引入外部css文件
+（4）@import：@import是在style标签内写，引入css文件的
+优先级：行内样式>(内嵌式  链接式 谁在后加载谁的样式)@import
+ px:像素  em:文字长度的几倍16px
+ rgb(红，绿，蓝）
+ font-size：字体大小     font-family：字体
+ font-style：normal（正常）/oblique（偏斜体）/italic(斜体）
+ font-weight:normal(正常粗细)/
+ bold(比正常字体粗)/bolder(比bold粗)/lighter(比正常字体细)/
+ 100-900，越大越粗，9个层次
+ text-transform: capitalize;首字母大写/uppercase;全部大写/
+                 lowercase;全部小写
+text-decoration：none(正常显示)/underline(加下线)/
+                 line-through(删除线)/overline(加顶线)
+首行缩进：text-indent
+单词间距：word-spacing:-1px;
+字母间距：letter-spacing:10px;
+垂直对齐：line-height
+背景颜色：background-color：；
+背景图像：background-img：url(路径)
+background-repeat：平铺/repeat-x：水平/repeat-y：垂直/no-repeat：不平铺
+background-position：背景位置/attachment：固定位置
+
+盒模型
+    由margin，border，padding，content   组成
+ display：none(元素不会显示)/block(显示成块元素)
+          /inline-block(默认)/inline(行内块元素)
+
+浮动float:none(默认)/left/right
+清除浮动：clear：both
+伪类清除浮动：after
+   1.clearfix：after{content:""; display:block; height:0; visibility:hidden; clear:both; }
+   2.clearfix{zoom：1}//IE清除浮动
+   overflow：hidden(超出隐藏)  |visible(显示超出内容) |auto|scroll
+   
+定位position
+   相对定位：position：relative；
+   绝对定位：position：absolute；
+   固定定位：position：fixed；
