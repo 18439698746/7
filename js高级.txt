@@ -1,0 +1,176 @@
+函数的创建方式及调用
+  1.函数声明（命名函数  有名字）   function 函数名（形参1，形参2...）{要执行的代码}   调用：函数名（实参1，实参2...）
+  2.匿名函数（函数表达式  没有名字）   function（形参1，形参2...）{要执行的代码}   自调用：(实参1，实参2) +(实参1，实参2) -(实参1，实参2) !() ~()    将函数赋值给变量，通过变量调用函数
+  3.通过构造函数声明      var fun=new Function("形参1"，"形参2"...，"要执行的代码")
+  return  作用1.使函数产生一个返回值       2.return之后的代码不在执行
+  内部属性1.this指向调用这个函数的对象
+      2.prototype指向这个函数的原型
+      3.length获取这个函数希望接受行参的个数
+   call()和.apply()
+                 作用：1.调用函数    2.改变this的指针指向     3.实现了继承
+                 区别：传参方式不同  .call（）参数逐个传递   .apply参数通过数组的形式传递
+      变量提升和函数声明提升  
+      1.变量提升：在函数内部隐式声明的变量会自动提升为全局变量
+      2.函数声明提升：以函数声明的方式声明的函数，会自动提升到当前作用域的最前面
+      作用域：变量及函数的作用域范围
+      1.全局作用域：1.没有在任何函数内部的变量及函数   2.隐式声明的局部变量（变量提升） 3.window对象的属性方法
+      2.局部作用域：在函数内部声明变量及函数(作用范围仅限于声明了该变量(或函数)的函数)
+      作用域链：当多个函数发生嵌套的时候，系统从函数的最内部开始向外搜索，直到全局作用域
+   闭包：在一个函数中访问另一个函数中的变量
+              核心原理：被内部函数访问的外部函数的变量可以保存在外部函数作用域而不是被回收
+              作用：1.可以读取函数内部变量   2. 让一些变量的值，长期保存在内存中
+              垃圾回收机制：1.标记清除   2.引用计数
+              缺点：内存消耗很大
+    动画
+      1.间歇调用var timer=setInterval（函数名，间隔时间）；
+                          清除：clearInterval（timer）；
+      2.延时调用var Otimer=setTimeout（函数名，延迟时间）；
+                          清除：setTimeout（Otimer）；
+      offsetleft和offsetTop（只读）：获取元素距离最近且具有定位属性的父级元素的左边缘和上边缘的距离
+      offsetWidth，offsetHeight（只读）：获取指定元素的占位宽    样式宽+padding+border
+      clientWidth，clientHeight（只读）：获取指定元素的可视区宽   样式宽+padding
+      clientX，clientY(只读)：获取鼠标距离页面饰口左边缘的距离
+      scrollHeight，scrollWidth：获取元素的实际内容的宽高度，会谁对象中内容超过可视区后而变大
+      scrollTop，scrollLeft(可读可写)：获取或设置元素的滚动高度和宽度（隐藏的内容的高度）
+      offsetX，offsetY：鼠标距离事件源左边缘和上边缘的距离
+ tween
+       Linear：匀速      easein：加速       easeOut:减速      easeInOut：先加速后减速
+                     每个函数都有4个参数：1.current time：当前时间    2.beginning   value：初使值
+                     3.change in value：变化量  4.duration：持续时间
+  对象：无序的数据集合
+             面向对象的概念：不知道其内部结构，则可以使用其他方法
+             创建对象的方法：1.字面量创建  2.通过构造函数创建
+             访问对象属性：1."."运算符  2.[]运算符   3. 两种访问对象的区别：[]运算符可以识别无效的属性名
+             对象属性的操作：1.添加修改：person.name="laowang"
+               2.删除 ：delete person.name
+               对象遍历：for in
+               分为工厂模式和构造模式
+               
+原型
+         ：每一个构造函数都有原型，原型中的属性和方法，所有实力共享
+         作用：实现相同属性和方法，可以节省内存空间，优化代码
+     prototype属性：每一个构造函数都有prototype属性，该属性指向指定构造函数的原型
+     constructor属性：每一个原型都有constructor属性，该属性指向指定原型的构造函数
+     proto属性：每一个实例都有一个__proto__属性，该属性指向指定实例的原型
+     构造函数，原型，实例之间的关系：构造函数通过prototype属性指向他的原型。原型通过constructor属性指向他的构造函数，实例通过proto属性指向它的原型
+     hasOwnProperty()方法：用于指示一个对象自身(不包括原型链)是否具有指定名称的属性。如果有。返回true，否者返回false
+     in：用于指示一个对象自身(包括原型链)是否具有指定名称的属性。如果有，返回true，否则返回false
+     
+继承
+       三种：原型链继承：将父类的实例赋值给子类，子类将拥有父类的所有属性和方法 。  核心语句：Son.prototype = new Parent();
+                  类似继承：在子类构造函数内部通过.call()或者.apply()方法，调用父类构造函数
+                  组合继承(常用继承)：类似继承和原型继承的组合使用，互相补充不足。   利用原型链继承模式完成原型中方法及属性的继承，利用.call()向父类传递参数
+       概念：被继承的构造函数叫做超类型(父类，基类)，继承的构造函数叫做子leixing(子类，派生类)
+       
+jquery
+    1.jq对象和dom对象的方法不能混用
+    2.jq对象命名时需在前面加$
+    转化：1.dom对象转化为jq对象：$(dom对象)
+     2.jq对象转化为dom对象:(1):jq对象[下标]  (2):jq对象.get(下标)
+     基本选择器：1.id   $("#a")   2.类   $(".b")  3.标签  $("p")  4.全局 $("*")  5.群组  $("div,span,p,myclass")
+     层次选择器：1.后代选择器  $(”form  input”)  2.子代选择器  $(“parent > child”)  3.同级选择器  $(“prev + next”)
+     基础过滤选择器(8)个：1.$("div:first") :页面中第一个div  2.$("div:last") :页面中最后一个div   3.$("span:not(.c)")页面中类名不为c的span标签
+          4.$(“p:even”)  ：页面中偶数索引(从0开始)的p  5.$(“tr:odd”) ：页面中奇数索引(从0开始)的tr    6.$(“button:eq(2)”)： 页面中索引为2的button
+          7.$(“tr:gt(2)”) ：页面中索引值大于2的tr   8.$(“tr:lt(3)”) ：页面中索引值小于3的tr
+       内容过滤选择器(2)个：1：$("td:contains('文本')"):页面中包含文本两个字的td
+                 2:$("div:has('sapn')")：页面中包含span标签的div
+       属性过滤选择器(2)个：1.$("div[name]"):页面中有name属性的div
+                 2.$("div[class='d']")：页面中class属性值为d的div
+       子元素过滤选择器(2)个：1.$("span:first-child")：第一个span元素，且有父级
+                  2.$("span:last-child")：最后一个span元素，且有父级
+        表单选择器：$(":input")：获取所有表单元素
+        表单属性过滤选择器：$("input:checked"):获取所有为选中状态的复选框
+ 
+jQuery的DOM操作
+        分为3个方面：1：DOM Core(核心)   2.HTML-DOM   3.CSS-DOM
+        each()方法为每个匹配元素规定运行的函数
+        html():设置或返回所选元素的内容(等同于js中的innerHtml)
+        text():设置或返回所选元素的文本内容(等同于js中的innertext)
+        val():设置或返回表单字段的值(等同于js中的value)
+        attr: 1.获取元素属性         语法：$(selector).attr(attribute)
+              2.设置元素属性          语法：$(selector).attr(attribute,value)
+                         删除元素属性：removeAttr(name):删除指定元素
+                         获取样式：$("#nav").attr("class")
+                         设置样式：$("#nav").attr("class","nav2")
+                         增加样式：addClass(class)
+                         移除样式：removeClass([class])
+                         判断是否含有某个样式：hasCalss(class)
+       创建节点：语法  ：$(html字符串)  创建Dom节点，并返回一个jQuery对象
+       append():想每个匹配的元素内部追加内容         语法：$(selector).append(content)
+       appendTo():在被元素的结尾(仍在内部)插入指定内容，和(append方法颠倒)   语法：$(content).appdendTo(selector)
+       prepend():向每个匹配的元素内部前面添加内容      语法：$(selector).prepend(content)
+       prependTo():把所有匹配的元素前置到另一个，指定的元素元素集合中     语法：$(content).prependTo(selector)
+       after():在每个匹配的元素之后插入内容
+       insertAfter():把所有匹配的元素插入到另一个指定的元素集合后面（颠倒了常规的$(A).after(B)的操作）
+       before():在每个匹配的元素之前插入内容
+       insertBefore():把所有匹配的元素插入到另一个指定的元素集合的前面（颠倒了常规的$(A).before(B)的操作）
+       clone():复制节点：方法生成被元素的副本，包含子节点，文本和属性
+       删除节点：empty():删除匹配的元素集合中说有的子节点，将子节点清空
+         remove():删除选中节点，并返回被删除的节点对象，可以继续使用被删除的对象
+         替换节点：replaceWith(content):将选中的元素替换成content
+         包裹节点：1：wrap(html):将所选的元素用指定的html包裹起来
+          2：wrapInner（html):将所选的元素的字内容用指定的html包裹起来
+          3.wrapAll（）方法
+          位置：1.offset():获取匹配元素在当前饰口的相对偏移。    返回值：返回一个对象，该对象包含两个整型属性：top和left 
+       2.position() :获取匹配元素相对于父元素的偏移
+       3.scrollTop():获取匹配元素相对滚动条顶部的偏移
+       4.scrollLeft():获取匹配元素相对滚动条左侧的偏移
+jQuery事件
+                 事件绑定 ：1：直接使用事件名   2.on(event,function)   3.bind(event,function)
+                 事件移除：1.off():通常用于移除通过on方法绑定事件(
+            2.unbind():移除被选元素的事件
+            鼠标事件：
+            mouseover：鼠标移入(支持事件冒泡)
+            mouseout：鼠标移出(支持事件冒泡)
+            mouseleave：鼠标移出(不支持事件冒泡)
+            mouseenter：鼠标移入(不支持事件冒泡)
+            mousedown：鼠标按下
+            mouseup:鼠标抬起
+            mousemove：鼠标移动
+            click：鼠标单击
+            dblclick:鼠标双击
+            contextmenu：鼠标右键
+            键盘事件：
+            keydown:键盘按下
+            keyup:键盘抬起
+            表单事件：
+            blur:失去焦点
+            focus：获取焦点
+            change：内容发生改变
+            submit：表单提交事件
+            复合事件：hover方法规定当鼠标指针悬停在被选在被选元素上时要运行的两个函数
+    event.type：该属性用于获得触发该事件的类型，对引发事件的不同操作，返回不同结果
+    event.target：该属性用于触发事件的元素
+    event.pageX和event.pageY：用于两个属性可以获得鼠标的相对于页面的当前位置
+    event.preventDefault():阻止默认事件
+    event.stopPropagation():阻止事件冒泡
+
+事件委托
+            事件委托：通俗的讲，事件就是onclick，onmouseover，onmouseout，等就是事件，委托呢，就是让别人来做，这个事件本来是加在某些元素上的，然而你却加到别人身上来做，完成这个事件。
+            原理：利用冒泡的原理，把事件加到父级上，触发执行效果
+            好处：减少事件注册，提高性能
+    delegate():方法指定的元素(属于被选元素的子元素)添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数
+                                            最新on方法取替了delegate方法
+            事件命名空间：事件添加命名空间便于时间管理：删除事件和触发事件
+           
+jQuery动画
+        hide([speed,[fn]]):隐藏显示元素
+        show([speed,[fn]])：显示隐藏的匹配元素
+        toggle([speed],[fn]):如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的
+        slideUp(speed, [callback])：通过高度变化(向上减小)来动态地隐藏所有匹配的元素，在隐藏完成后可选地触发一个回调函数
+        slideDown(speed, [callback])：通过高度变化(向下增大)来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数
+        slideToggle([speed],[fn])：通过高度变化来切换所有匹配元素的可见性，并在切换完成后可选地触发一个回调函数
+        fadeOut(speed, [callback])：通过不透明度的变化来实现所匹配元素的淡出效果，并在动画完成后可选地触发一个回调函数
+        fadeIn(speed, [callback])：通过不透明的变化来实现所有匹配元素的淡入效果，并在动画完成后可选地触发一个回调函数
+        fadeToggle([speed,[fn]])：通过不透明的变化来开关所有匹配元素的淡入和淡出效果，并在动画完成后可选地触发一个回调函数
+        fadeTo(speed,opacity,[fn])：把所有匹配元素的不透明度以渐进方式调整到指定的不透明度，并在动画完成后可选地触发一个回调函数
+        animate(params,[speed],[fn])：用于创建自定义动画的函数
+        stop([clearQueue],[gotoEnd]):停止所有在指定元素上正在运动的动画
+        delay(duration):设置一个来推测执行对列中的项目
+
+
+
+
+
+
+
